@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوسيط | المسوق العقاري</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tahoma", Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* ===== الهيدر وزر البرقر ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #003366;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      order: 2; /* عشان يجي يسار الشعار */
+    }
+    .burger span {
+      width: 25px;
+      height: 3px;
+      background: #ffd700;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* القائمة للجوال */
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: #002244;
+        flex-direction: column;
+        padding: 80px 20px;
+        gap: 20px;
+        transition: right 0.3s ease-in-out;
+      }
+      nav ul.active {
+        right: 0;
+      }
+    }
+
+    /* ===== البانر ===== */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      background: url('s2.jpg') no-repeat center center/cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,50,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      width: 90%;
+      margin: auto;
+      animation: fadeInUp 2s ease-out;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      color: #ffd700;
+      animation: slideIn 2s ease-out;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #eee;
+      animation: fadeIn 3s ease-out;
+    }
+
+    /* صندوق البحث - سنتر */
+    .search-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .search-box input {
+      flex: 1;
+      max-width: 400px;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .search-box button {
+      background: linear-gradient(45deg, #ffd700, #ffb400);
+      color: #003366;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.4s;
+    }
+    .search-box button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #ffea00, #ff9800);
+      box-shadow: 0 0 15px #ffd700;
+    }
+
+    @media (max-width: 600px) {
+      .hero { height: 70vh; }
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 16px; }
+      .search-box {
+        flex-direction: column;
+        align-items: center;
+      }
+      .search-box input, .search-box button {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* أنيميشن */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>الوسيط</h1>
+    <div class="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul id="menu">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="listings.html">العقارات</a></li>
+        <li><a href="blog.html">المدونة</a></li>
+        <li><a href="t.html">اتصل بنا</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- البانر -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>مرحباً بكم في موقع الوسيط</h1>
+      <p>ابحث عن عقارك المثالي في السعودية بسهولة وأمان</p>
+      <form class="search-box" onsubmit="window.location.href='listings.html'; return false;">
+        <input type="text" placeholder="ابحث عن شقة، فيلا، أرض...">
+        <button type="submit">🔍 بحث</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const menu = document.getElementById("menu");
+    function toggleMenu() {
+      menu.classList.toggle("active");
+    }
+    document.querySelectorAll("#menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

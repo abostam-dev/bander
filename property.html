@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تفاصيل العقار | الوسيط</title>
+  <style>
+    body { margin: 0; font-family: Tahoma, sans-serif; background: #f9f9f9; }
+    main { padding: 40px 20px; max-width: 900px; margin: auto; }
+    h1 { color: #003366; margin-bottom: 15px; }
+    img { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+    p { margin: 8px 0; }
+    .price { font-size: 20px; font-weight: bold; color: #e63946; }
+    button {
+      background: #003366; color: #fff; border: none;
+      padding: 12px 25px; border-radius: 30px; cursor: pointer;
+    }
+    button:hover { background: #002244; }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h1>🏡 فيلا فاخرة بالرياض</h1>
+    <img src="property1.jpg" alt="عقار">
+    <p>📍 الموقع: حي الياسمين</p>
+    <p class="price">1,200,000 ريال</p>
+    <p>✨ فيلا حديثة التصميم تحتوي على 5 غرف نوم، 4 حمامات، مجلس رجال ونساء، وحديقة واسعة.</p>
+    <button onclick="window.location.href='t.html'">تواصل معنا</button>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("header.html").then(r => r.text()).then(d => document.getElementById("header").innerHTML = d);
+    fetch("footer.html").then(r => r.text()).then(d => document.getElementById("footer").innerHTML = d);
+  </script>
+</body>
+</html>
