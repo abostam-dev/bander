@@ -1,217 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الوسيط | المسوق العقاري</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>كلين واو | غسيل ملابس في حي الرمال – الرياض</title>
+  <meta name="description" content="كلين واو – خدمات غسيل وكيّ الملابس مع استلام وتوصيل داخل حي الرمال بالرياض. اطلب عبر واتساب الآن!" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="كلين واو – غسيل ملابس (الرمال، الرياض)" />
+  <meta property="og:description" content="استلام وتوصيل سريع داخل حي الرمال. اطلب عبر واتساب." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: "Tahoma", Arial, sans-serif;
-      background: #f9f9f9;
-      color: #222;
-      overflow-x: hidden;
-    }
-
-    /* ===== الهيدر وزر البرقر ===== */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: #003366;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 {
-      font-size: 22px;
-      margin: 0;
-    }
-    .burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      order: 2; /* عشان يجي يسار الشعار */
-    }
-    .burger span {
-      width: 25px;
-      height: 3px;
-      background: #ffd700;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* القائمة للجوال */
-    @media (max-width: 768px) {
-      .burger {
-        display: flex;
-      }
-      nav ul {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 70%;
-        background: #002244;
-        flex-direction: column;
-        padding: 80px 20px;
-        gap: 20px;
-        transition: right 0.3s ease-in-out;
-      }
-      nav ul.active {
-        right: 0;
-      }
-    }
-
-    /* ===== البانر ===== */
-    .hero {
-      position: relative;
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      background: url('s2.jpg') no-repeat center center/cover;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,50,0.6);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      width: 90%;
-      margin: auto;
-      animation: fadeInUp 2s ease-out;
-    }
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-      color: #ffd700;
-      animation: slideIn 2s ease-out;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
-      color: #eee;
-      animation: fadeIn 3s ease-out;
-    }
-
-    /* صندوق البحث - سنتر */
-    .search-box {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .search-box input {
-      flex: 1;
-      max-width: 400px;
-      padding: 12px;
-      border-radius: 30px;
-      border: none;
-      font-size: 16px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    .search-box button {
-      background: linear-gradient(45deg, #ffd700, #ffb400);
-      color: #003366;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      transition: 0.4s;
-    }
-    .search-box button:hover {
-      transform: scale(1.1);
-      background: linear-gradient(45deg, #ffea00, #ff9800);
-      box-shadow: 0 0 15px #ffd700;
-    }
-
-    @media (max-width: 600px) {
-      .hero { height: 70vh; }
-      .hero h1 { font-size: 30px; }
-      .hero p { font-size: 16px; }
-      .search-box {
-        flex-direction: column;
-        align-items: center;
-      }
-      .search-box input, .search-box button {
-        width: 100%;
-        max-width: 100%;
-      }
-    }
-
-    /* أنيميشن */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+    :root{--brand:#0ea5e9;--dark:#0b132b;--muted:#6b7280}
+    html{scroll-behavior:smooth}
+    body{font-family:'Tajawal',sans-serif;background:#f8fafc}
+    .navbar-brand img{height:48px}
+    .hero{background:linear-gradient(135deg,#0ea5e9 0%,#38bdf8 100%);color:#fff}
+    .hero .badge{background:rgba(255,255,255,.2)}
+    .card{border:none;border-radius:1rem;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+    .feature-icon{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:#eff6ff;font-size:1.4rem;color:var(--brand)}
+    .btn-brand{background:var(--dark);color:#fff;border-radius:.75rem}
+    .btn-brand:hover{background:#111827;color:#fff}
+    .price{font-weight:800;color:var(--brand)}
+    .whatsapp{position:fixed;bottom:16px;left:16px;z-index:1000}
+    footer{color:#94a3b8}
+    /* Pricing Cards Equal Height */
+    .card-pricing{transition:.3s}
+    .card-pricing:hover{transform:translateY(-5px);box-shadow:0 12px 25px rgba(0,0,0,.1)}
+    .equal-cards{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center}
+    .equal-cards .card{flex:1 1 280px;max-width:320px;display:flex;flex-direction:column;justify-content:space-between}
+    .card-body{text-align:center}
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>الوسيط</h1>
-    <div class="burger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom" data-bs-theme="light">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="logo.png" alt="شعار كلين واو"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="قائمة">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#services">الخدمات</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">الأسعار</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how">كيف نعمل</a></li>
+          <li class="nav-item"><a class="nav-link" href="#order">طلب الخدمة</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location">الموقع</a></li>
+        </ul>
+        <a href="https://wa.me/966500000000" class="btn btn-brand">اطلب عبر واتساب</a>
+      </div>
     </div>
-    <nav>
-      <ul id="menu">
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="listings.html">العقارات</a></li>
-        <li><a href="blog.html">المدونة</a></li>
-        <li><a href="t.html">اتصل بنا</a></li>
-      </ul>
-    </nav>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6 order-lg-2 text-center">
+          <img src="logo.png" class="img-fluid rounded-4 shadow" alt="شعار كلين واو" style="max-height:280px" />
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <span class="badge rounded-pill mb-3">غسيل وكيّ • استلام وتوصيل</span>
+          <h1 class="display-5 fw-bold">كلين واو – غسيل ملابس بحي الرمال، الرياض</h1>
+          <p class="lead mt-3">خدمة سريعة، نظافة مبهرة، واستلام وتوصيل لبيتك داخل حي الرمال. جرّبنا اليوم!</p>
+          <div class="d-flex gap-2 mt-3 flex-wrap">
+            <a href="#order" class="btn btn-dark btn-lg">اطلب الآن</a>
+            <a href="tel:+966500000000" class="btn btn-outline-light btn-lg">اتصل بنا</a>
+          </div>
+          <p class="mt-3 small">ساعات العمل: يوميًا 9 صباحًا – 11 مساءً</p>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- البانر -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>مرحباً بكم في موقع الوسيط</h1>
-      <p>ابحث عن عقارك المثالي في السعودية بسهولة وأمان</p>
-      <form class="search-box" onsubmit="window.location.href='listings.html'; return false;">
-        <input type="text" placeholder="ابحث عن شقة، فيلا، أرض...">
-        <button type="submit">🔍 بحث</button>
-      </form>
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">خدماتنا</h2>
+        <p class="text-muted">استلام وتوصيل داخل حي الرمال – الرياض</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="feature-icon mb-3"><i class="bi bi-bag"></i></div>
+              <h5 class="card-title">غسيل وكيّ</h5>
+              <p class="card-text text-muted">ملابس يومية – رجال ونساء وأطفال.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="feature-icon mb-3"><i class="bi bi-droplet"></i></div>
+              <h5 class="card-title">مفارش وستائر</h5>
+              <p class="card-text text-muted">تنظيف عميق وتعقيم لطيف على الأقمشة.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="feature-icon mb-3"><i class="bi bi-grid"></i></div>
+              <h5 class="card-title">سجاد وموكيت</h5>
+              <p class="card-text text-muted">معدات احترافية وعناية بالألوان.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="feature-icon mb-3"><i class="bi bi-truck"></i></div>
+              <h5 class="card-title">استلام وتوصيل</h5>
+              <p class="card-text text-muted">موعد يناسبك وفرقنا توصل لبابك.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <script>
-    const menu = document.getElementById("menu");
-    function toggleMenu() {
-      menu.classList.toggle("active");
-    }
-    document.querySelectorAll("#menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("active");
-      });
-    });
-  </script>
+  <!-- PRICING -->
+  <section id="pricing" class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">أسعار تقديرية</h2>
+        <p class="text-muted">الأسعار قد تختلف حسب الكمية ونوع القماش</p>
+      </div>
+      <div class="equal-cards">
+        <div class="card card-pricing h-100">
+          <div class="card-body">
+            <h5 class="card-title">ملابس يومية</h5>
+            <p class="price display-6">ابتداءً من 6 ر.س/قطعة</p>
+            <a href="#order" class="btn btn-dark w-100">اطلب الآن</a>
+          </div>
+        </div>
+        <div class="card card-pricing h-100">
+          <div class="card-body">
+            <h5 class="card-title">مفارش وستائر</h5>
+            <p class="price display-6">ابتداءً من 35 ر.س</p>
+            <a href="#order" class="btn btn-dark w-100">اطلب الآن</a>
+          </div>
+        </div>
+        <div class="card card-pricing h-100">
+          <div class="card-body">
+            <h5 class="card-title">سجاد وموكيت</h5>
+            <p class="price display-6">ابتداءً من 25 ر.س/م²</p>
+            <a href="#order" class="btn btn-dark w-100">اطلب الآن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
+  <!-- HOW -->
+  <section id="how" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">كيف نعمل؟</h2>
+        <p class="text-muted">3 خطوات بسيطة</p>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-md-4"><div class="card h-100"><div class="card-body"><h5>1) تحجز الموعد</h5><p class="text-muted">راسلنا واتساب لتحديد الاستلام.</p></div></div></div>
+        <div class="col-md-4"><div class="card h-100"><div class="card-body"><h5>2) نستلم وننظّف</h5><p class="text-muted">فريقنا يبدأ التنظيف باحترافية.</p></div></div></div>
+        <div class="col-md-4"><div class="card h-100"><div class="card-body"><h5>3) نوصّل لبابك</h5><p class="text-muted">نسلّمك القطع نظيفة ومكوية.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order" class="py-5 bg-white border-top">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">طلب الخدمة</h2>
+        <p class="text-muted">الموقع: الرياض – حي الرمال</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <form id="orderForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="name">الاسم الكامل</label>
+                    <input type="text" class="form-control" id="name" required>
+                    <div class="invalid-feedback">فضلاً أدخل اسمك.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="phone">الجوال (واتساب)</label>
+                    <input type="tel" class="form-control" id="phone" inputmode="tel" pattern="^[0-9+\-\s]{8,15}$" required>
+                    <div class="invalid-feedback">أدخل رقم صحيح للتواصل واتساب.</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="address">العنوان التفصيلي</label>
+                    <input type="text" class="form-control" id="address" placeholder="الرياض – حي الرمال – الشارع ..." required>
+                    <div class="invalid-feedback">فضلاً اكتب العنوان.</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="notes">ملاحظات</label>
+                    <textarea class="form-control" id="notes" rows="3" placeholder="أي تفاصيل إضافية؟"></textarea>
+                  </div>
+                  <div class="col-12 d-grid d-sm-flex gap-2 mt-2">
+                    <button class="btn btn-dark" type="submit">إرسال على واتساب</button>
+                    <button class="btn btn-outline-secondary" type="reset">مسح الحقول</button>
+                  </div>
+                  <small class="text-muted">لا نقوم بتخزين بياناتك. يتم إنشاء رسالة واتساب محليًا على جهازك.</small>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="location" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">موقعنا</h2>
+        <p class="text-muted">الرياض – حي الرمال</p>
+      </div>
+      <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+        <iframe src="https://www.google.com/maps?q=%D8%AD%D9%8A%20%D8%A7%D9%84%D8%B1%D9%85%D8%A7%D9%84%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="خريطة – حي الرمال بالرياض"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP BUTTON -->
+  <a class="whatsapp btn btn-success btn-lg rounded-pill" href="https://wa.me/966500000000" aria-label="اطلب عبر واتساب">واتساب مباشر</a>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-top bg-white">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div class="small">© <span id="year"></span> كلين واو – جميع الحقوق محفوظة</div>
+      <div class="small">الرياض – حي الرمال • هاتف: <a href="tel:+966500000000">+966 50 000 0000</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('orderForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.classList.add('was-validated');
+        return;
+      }
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      const lines = [
+        'طلب جديد – كلين واو',
+        `الاسم: ${name}`,
+        `الجوال: ${phone}`,
+        `العنوان: ${address}`,
+        notes ? `ملاحظ
