@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الصفحة الرئيسية - متجري</title>
+</head>
+<body>
+
+    <!-- استدعاء الشريط العلوي -->
+    {% include "header.html" %}
+
+    <main class="content">
+        <h1>مرحباً بك في متجري</h1>
+        <p>أفضل المنتجات بأفضل الأسعار.</p>
+    </main>
+
+    <!-- استدعاء الشريط السفلي -->
+    {% include "footer.html" %}
+
+</body>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Tahoma", sans-serif;
+        background-color: #ecf0f1;
+    }
+    .content {
+        text-align: center;
+        padding: 100px 20px;
+    }
+    .content h1 {
+        font-size: 36px;
+        color: #2c3e50;
+    }
+    .content p {
+        font-size: 18px;
+        color: #7f8c8d;
+    }
+</style>
+</html>
