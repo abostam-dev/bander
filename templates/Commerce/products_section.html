@@ -1,0 +1,16 @@
+<section>
+    <h2>قائمة المنتجات</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> - {{ product.price }} ريال
+                {% if product.image %}
+                    <br>
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="150">
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>لا توجد منتجات حالياً.</li>
+        {% endfor %}
+    </ul>
+</section>

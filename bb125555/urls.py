@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include   # استيراد path و include
 from django.conf import settings
 from django.conf.urls.static import static
-from . import views   # استيراد views من المشروع الرئيسي
+from . import views   # استدعاء home_view من views.py
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,7 +13,7 @@ urlpatterns = [
     path('finance/', include('finance.urls')),
 
     # الصفحة الرئيسية
-    path('', views.home, name='home'),
+    path('', views.home_view, name='home'),
 ]
 
 # دعم الملفات الثابتة والميديا أثناء التطوير
