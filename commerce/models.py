@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -16,13 +17,16 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name="products", verbose_name="الفئة"
+        Category,
+        on_delete=models.CASCADE,
+        related_name="products",
+        verbose_name="الفئة"
     )
     name = models.CharField(max_length=150, verbose_name="اسم المنتج")
     description = models.TextField(blank=True, null=True, verbose_name="الوصف")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="السعر")
     stock = models.PositiveIntegerField(default=0, verbose_name="المخزون")
-    image = models.ImageField(upload_to="products/", blank=True, null=True, verbose_name="صورة المنتج")
+    image = CloudinaryField(blank=True, null=True, verbose_name="صورة المنتج")
 
     class Meta:
         verbose_name = "منتج"
@@ -34,7 +38,9 @@ class Product(models.Model):
 
 class Order(models.Model):
     customer = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="العميل"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="العميل"
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإنشاء")
     status = models.CharField(max_length=50, default="قيد المعالجة", verbose_name="الحالة")

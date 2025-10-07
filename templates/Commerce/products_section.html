@@ -1,16 +1,71 @@
 <section>
     <h2>قائمة المنتجات</h2>
-    <ul>
+    <div class="products-grid">
         {% for product in products %}
-            <li>
-                <strong>{{ product.name }}</strong> - {{ product.price }} ريال
+            <div class="product-card">
                 {% if product.image %}
-                    <br>
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="150">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% endif %}
-            </li>
+                <h3>{{ product.name }}</h3>
+                <p class="price">{{ product.price }} ريال</p>
+                <button class="add-to-cart">🛒 أضف إلى السلة</button>
+            </div>
         {% empty %}
-            <li>لا توجد منتجات حالياً.</li>
+            <p>لا توجد منتجات حالياً.</p>
         {% endfor %}
-    </ul>
+    </div>
 </section>
+
+<style>
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .product-card img {
+        max-width: 100%;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+    .product-card h3 {
+        margin: 10px 0;
+        font-size: 18px;
+        color: #2c3e50;
+    }
+    .product-card .price {
+        color: #27ae60;
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .add-to-cart {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+    .add-to-cart:hover {
+        background-color: #2980b9;
+    }
+</style>

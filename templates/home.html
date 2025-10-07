@@ -1,21 +1,241 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>الرئيسية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساعتي - الرئيسية</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <!-- Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body { font-family: 'Tajawal', sans-serif; background: #fdfdfd; }
+    /* Navbar */
+    .navbar { transition: background 0.4s; }
+    .navbar.scrolled { background: #1f2d3d !important; }
+
+    /* Logo */
+    .navbar-brand { font-size: 1.4rem; display: flex; align-items: center; }
+    .navbar-brand i { margin-left: 6px; color: #ffc107; }
+
+    /* Hero (Carousel) */
+    .carousel-item {
+      height: 70vh;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .carousel-item::after {
+      content: ""; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .carousel-caption {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      z-index: 2;
+    }
+    .carousel-caption h1 { font-size: 2.4rem; font-weight: bold; }
+    .carousel-caption p { font-size: 1.2rem; }
+
+    /* Features */
+    .feature-box { text-align: center; padding: 20px; }
+    .feature-box i { font-size: 2.5rem; color: #0d6efd; margin-bottom: 10px; }
+
+    /* Promo */
+    .promo {
+      background: linear-gradient(135deg,#0d6efd,#6610f2);
+      color: #fff; text-align: center; padding: 70px 20px; border-radius: 15px;
+    }
+
+    /* Testimonials */
+    .testimonial { 
+      background: #fff; 
+      border-radius: 10px; 
+      padding: 25px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 350px; 
+      margin: auto;
+    }
+    .testimonial p { font-size: 1.1rem; }
+    .testimonial small { color: #666; }
+
+    /* Footer */
+    footer { background: #1f2d3d; color: #fff; padding: 40px 0; }
+    footer a { color: #ccc; text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer i { transition: color 0.3s; }
+    footer i:hover { color: #0d6efd; }
+  </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
-    {% include "header.html" %}
 
-    <main>
-        <h1>مرحباً بكم في متجري</h1>
+  <!-- الهيدر -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-watch"></i> ساعتي
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">المنتجات</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">تواصل معنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        <!-- قسم المنتجات -->
-        {% include "commerce/products_section.html" %}
-    </main>
+  <!-- البانر (سلايدر) -->
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-    <!-- الشريط السفلي -->
-    {% include "footer.html" %}
+      <!-- سلايد 1 -->
+      <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        <div class="carousel-caption text-center text-white">
+          <h1>ساعات كلاسيكية</h1>
+          <p>إطلالة فاخرة لكل مناسبة</p>
+          <a href="#products" class="btn btn-warning btn-lg mt-3">تسوق الآن</a>
+        </div>
+      </div>
+
+      <!-- سلايد 2 -->
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1516382799247-87b018f1fc4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        <div class="carousel-caption text-center text-white">
+          <h1>ساعات رياضية</h1>
+          <p>تصاميم عملية تناسب أسلوبك اليومي</p>
+          <a href="#products" class="btn btn-warning btn-lg mt-3">تسوق الآن</a>
+        </div>
+      </div>
+
+      <!-- سلايد 3 -->
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1601924582971-d0c430e60f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        <div class="carousel-caption text-center text-white">
+          <h1>ساعات جلدية</h1>
+          <p>فخامة التصميم مع الراحة اليومية</p>
+          <a href="#products" class="btn btn-warning btn-lg mt-3">تسوق الآن</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- أزرار التحكم -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+    <!-- مؤشرات (النقاط) -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+  </div>
+
+  <!-- المميزات -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-4 feature-box">
+        <i class="bi bi-truck"></i>
+        <h5>شحن مجاني</h5>
+        <p>نوصل ساعتك لباب بيتك بدون رسوم إضافية</p>
+      </div>
+      <div class="col-md-4 feature-box">
+        <i class="bi bi-shield-check"></i>
+        <h5>ضمان سنتين</h5>
+        <p>كل الساعات مضمونة ومكفولة ضد عيوب الصناعة</p>
+      </div>
+      <div class="col-md-4 feature-box">
+        <i class="bi bi-stars"></i>
+        <h5>ساعات أصلية</h5>
+        <p>منتجات موثوقة من أفضل الماركات العالمية</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- المنتجات -->
+  <main class="container my-5" id="products">
+    <h2 class="text-center mb-4">ساعاتنا</h2>
+    {% include "commerce/products_section.html" %}
+  </main>
+
+  <!-- بانر عرض -->
+  <section class="container my-5">
+    <div class="promo">
+      <h2>خصم 30% على الساعات الكلاسيكية</h2>
+      <p>اغتنم الفرصة قبل انتهاء العرض</p>
+      <a href="#products" class="btn btn-light">تسوق الآن</a>
+    </div>
+  </section>
+
+  <!-- آراء العملاء -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">آراء عملائنا</h2>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <div class="testimonial text-center">
+          <p>❝ اشتريت ساعة فخمة والتوصيل كان سريع جداً 👌 ❞</p>
+          <small>- نورة</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial text-center">
+          <p>❝ الجودة ممتازة والضمان أعطاني راحة بال ❞</p>
+          <small>- خالد</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial text-center">
+          <p>❝ متجر الساعات الأفضل بلا منازع ❞</p>
+          <small>- فاطمة</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 mb-4">
+          <h5>عن ساعتي</h5>
+          <p>ساعتي يوفر أحدث موديلات الساعات الأصلية بأسعار تنافسية وضمان سنتين.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>روابط</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>تابعنا</h5>
+          <a href="#"><i class="bi bi-facebook fs-4 me-2"></i></a>
+          <a href="#"><i class="bi bi-instagram fs-4 me-2"></i></a>
+          <a href="#"><i class="bi bi-twitter fs-4"></i></a>
+        </div>
+      </div>
+      <div class="text-center mt-3">© جميع الحقوق محفوظة - ساعتي 2025</div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // تغيير لون الهيدر عند التمرير
+    window.addEventListener("scroll", function() {
+      let nav = document.querySelector(".navbar");
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  </script>
 </body>
 </html>
