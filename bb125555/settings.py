@@ -5,8 +5,6 @@ Django settings for bb125555 project.
 from pathlib import Path
 import os
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -107,7 +105,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Cloudinary Config
+# Media files via Cloudinary
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME", "dgeqmz94r"),
     api_key=os.getenv("CLOUDINARY_API_KEY", "573553664196445"),
